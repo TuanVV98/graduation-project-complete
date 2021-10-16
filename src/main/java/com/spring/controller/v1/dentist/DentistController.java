@@ -62,7 +62,7 @@ public class DentistController {
 		return ResponseEntity.ok(dentistService.getById(id));
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PostMapping()
 	public ResponseEntity<Response<DentistProfileDTO>> createDentist(@Valid @RequestBody DentistProfileDTO dto,
 			BindingResult result) throws NotFoundException {
@@ -76,7 +76,7 @@ public class DentistController {
 		return ResponseEntity.ok(response);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'DENTIST')") // update role chỉ admin
+	@PreAuthorize("hasAnyRole('ADMIN','DENTIST')") // update role chỉ admin
 	@PutMapping("/{id}")
 	public ResponseEntity<Response<DentistProfileDTO>> updateDentist(@PathVariable("id") Long id,
 			@Valid @RequestBody DentistProfileDTO dto, BindingResult result) throws NotFoundException {

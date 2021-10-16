@@ -26,7 +26,7 @@ public class PostController {
 		this.postService = postService;
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PostMapping()
 	public ResponseEntity<Response<PostDTO>> create(@Valid @RequestBody PostDTO dto, BindingResult result) {
 
@@ -41,7 +41,7 @@ public class PostController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Response<PostDTO>> update(@Valid @RequestBody PostDTO dto, BindingResult result) {
 
@@ -56,7 +56,7 @@ public class PostController {
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@DeleteMapping("/{id}")
 	public void deletePost(@PathVariable("id") Long id) throws NotFoundException {
 		this.postService.hardDelete(id);

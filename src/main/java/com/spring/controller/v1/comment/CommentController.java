@@ -24,7 +24,7 @@ public class CommentController {
     }
 
     //read all comment của admin hoặc lễ tân
-    @PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+    @PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
     @GetMapping("/all")
     public ResponseEntity<Response<List<CommentsDTO>>> getAll(){
         Response<List<CommentsDTO>> response= new Response<>();
@@ -94,7 +94,7 @@ public class CommentController {
     }
  // phải đăng nhập
     // read all with deleteAt=TRUE
-    @PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+    @PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
     @GetMapping("/recycle-bin")
     public ResponseEntity<Response<List<CommentsDTO>>> getAllDeleteAtTrue(){
         Response<List<CommentsDTO>> response=new Response<>();
@@ -104,7 +104,7 @@ public class CommentController {
     
 
     //read all comment by post_id của admin hoặc lễ tân
-    @PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+    @PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
     @GetMapping("/post")
     public ResponseEntity<Response<List<CommentsDTO>> > getAllCommentByPostId
     (

@@ -48,7 +48,7 @@ public class CustomerController {
 		return ResponseEntity.ok(this.customerService.getById(id));
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PostMapping()
 	public ResponseEntity<Response<CustomerProfileDTO>> createCustomer(@Valid @RequestBody CustomerProfileDTO dto,
 			BindingResult result) throws NotFoundException {
@@ -61,7 +61,7 @@ public class CustomerController {
 		return new ResponseEntity<>(response, HttpStatus.CREATED);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PutMapping("/{id}")
 	public ResponseEntity<Response<CustomerProfileDTO>> updateCustomer(@PathVariable("id") Long id,
 			@Valid @RequestBody CustomerProfileDTO dto, BindingResult result) throws NotFoundException {
@@ -74,13 +74,13 @@ public class CustomerController {
 		return ResponseEntity.ok(response);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PatchMapping("/{id}")
 	public void sortDeleteDentist(@PathVariable("id") Long id, @RequestParam Boolean deleted) throws NotFoundException {
 		customerService.updateDeleted(id, deleted);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@DeleteMapping("/{id}")
 	public void deleteCustomer(@PathVariable("id") Long id) throws NotFoundException {
 		customerService.deleteById(id);

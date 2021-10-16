@@ -49,7 +49,7 @@ public class ServiceController {
 		return ResponseEntity.ok(response);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PostMapping()
 	public ResponseEntity<Response<ServiceDTO>> postServices(@Valid @RequestBody() ServiceDTO servicesDTO,
 			BindingResult result) throws NotFoundException {
@@ -67,7 +67,7 @@ public class ServiceController {
 		return new ResponseEntity<>(response, HttpStatus.CREATED);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PutMapping("/{id}")
 	public ResponseEntity<Response<ServiceDTO>> putServices(@Valid @RequestBody() ServiceDTO servicesDTO,
 			BindingResult result, @PathVariable("id") Long id) throws NotFoundException {

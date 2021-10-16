@@ -61,7 +61,7 @@ public class VoucherController {
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PostMapping()
 	public ResponseEntity<Response<VoucherDTO>> create(@Valid @RequestBody VoucherDTO dto, BindingResult result)
 			throws NotParsableContentException {
@@ -82,7 +82,7 @@ public class VoucherController {
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Response<VoucherDTO>> update(@Valid @RequestBody VoucherDTO dto, BindingResult result)
 			throws NotParsableContentException {
@@ -102,7 +102,7 @@ public class VoucherController {
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
 
-	@PreAuthorize("hasAnyRole('ADMIN' or 'RECEPTIONIST')")
+	@PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
 	@DeleteMapping(value = "/{id}")
 	public void deleteVoucher(@PathVariable("id") String id) throws NotFoundException {
 		this.voucherService.hardDelete(id);

@@ -48,7 +48,7 @@ public class AccountController {
         return  ResponseEntity.status( HttpStatus.OK).body(response);
     }
 //
-//    @PreAuthorize("hasAnyRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','RECEPTIONIST')")
     @PostMapping("/register")
     public ResponseEntity<Response<AccountsDTO>> register(@Validated @RequestBody AccountsDTO accountsDTO, BindingResult result) throws NotFoundException, MessagingException {
         
