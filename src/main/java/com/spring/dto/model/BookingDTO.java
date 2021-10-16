@@ -21,10 +21,10 @@ public class BookingDTO {
     private Long id;
 
     @NotNull
-    DentistProfileDTO dentistProfileDTO;
+    DentistProfileDTO dentistProfile;
 
     @NotNull
-    CustomerProfileDTO customerProfileDTO;
+    CustomerProfileDTO customerProfile;
 
     private Date bookingDate = new Date();
 
